@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
+import { AuthProvider } from "@/components/providers/auth-provider";
+import { Navbar } from "@/components/navbar";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Surf na Mão - Aluguel de Pranchas e Aulas de Surf",
-  description: "Plataforma de aluguel de pranchas de surf e aulas com instrutores qualificados.",
+  title: "Surf na Mao - Surf School Booking Platform",
+  description: "Book surf schools and boards in Portugal",
 };
 
 export default function RootLayout({
@@ -16,12 +18,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="en">
       <body className={inter.className}>
-        <Header />
-        <main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
-          {children}
-        </main>
+        <AuthProvider>
+          <div className="min-h-screen bg-gray-50">
+            <Navbar />
+            <main className="container mx-auto px-4 py-8">
+              {children}
+            </main>
+          </div>
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );
