@@ -4,13 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
 
-interface SchoolDetailsProps {
-  params: { id: string };
-}
-
-export default async function SchoolDetailsPage({ params }: SchoolDetailsProps) {
+export default async function SchoolDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const school = await prisma.school.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: {
       boards: true,
       reviews: {
