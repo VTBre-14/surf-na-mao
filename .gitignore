@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+# Note: node_modules.tar.gz is included for offline use and testing
 /.pnp
 .pnp.*
 .yarn/*
