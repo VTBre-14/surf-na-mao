@@ -64,10 +64,9 @@ echo ""
 echo "Choose your setup option:"
 echo "1. 🐳 Docker (Recommended - Works offline)"
 echo "2. 📦 Local Node.js (Requires internet)"
-echo "3. 📁 Extract compressed dependencies (Offline)"
-echo "4. ❌ Exit"
+echo "3. ❌ Exit"
 
-read -p "Enter your choice (1-4): " choice
+read -p "Enter your choice (1-3): " choice
 
 case $choice in
     1)
@@ -120,44 +119,13 @@ case $choice in
         
     3)
         echo ""
-        echo "📁 Extracting compressed dependencies..."
-        
-        if [ -f "node_modules.tar.gz" ]; then
-            # Remove existing node_modules if it exists
-            if [ -d "node_modules" ]; then
-                echo "Removing existing node_modules directory..."
-                rm -rf node_modules
-            fi
-            
-            # Extract the compressed archive
-            echo "Extracting node_modules.tar.gz..."
-            tar -xzf node_modules.tar.gz
-            
-            if [ -d "node_modules" ]; then
-                echo ""
-                echo "✅ node_modules extracted successfully!"
-                echo "Starting development server..."
-                npm run dev
-            else
-                echo ""
-                echo "❌ Extraction failed. Please check if tar is available on your system."
-            fi
-        else
-            echo ""
-            echo "❌ node_modules.tar.gz not found in the current directory."
-            echo "Please make sure you're in the project root directory."
-        fi
-        ;;
-        
-    4)
-        echo ""
         echo "👋 Goodbye!"
         exit 0
         ;;
         
     *)
         echo ""
-        echo "❌ Invalid choice. Please enter a number between 1 and 4."
+        echo "❌ Invalid choice. Please enter a number between 1 and 3."
         exit 1
         ;;
 esac 

@@ -47,10 +47,9 @@ Write-Host "npm: $(if ($npmAvailable) { '✅ Available' } else { '❌ Not availa
 Write-Host "`nChoose your setup option:" -ForegroundColor Yellow
 Write-Host "1. 🐳 Docker (Recommended - Works offline)" -ForegroundColor Cyan
 Write-Host "2. 📦 Local Node.js (Requires internet)" -ForegroundColor Cyan
-Write-Host "3. 📁 Extract compressed dependencies (Offline)" -ForegroundColor Cyan
-Write-Host "4. ❌ Exit" -ForegroundColor Red
+Write-Host "3. ❌ Exit" -ForegroundColor Red
 
-$choice = Read-Host "`nEnter your choice (1-4)"
+$choice = Read-Host "`nEnter your choice (1-3)"
 
 switch ($choice) {
     "1" {
@@ -96,38 +95,11 @@ switch ($choice) {
     }
     
     "3" {
-        Write-Host "`n📁 Extracting compressed dependencies..." -ForegroundColor Green
-        
-        if (Test-Path "node_modules.tar.gz") {
-            # Remove existing node_modules if it exists
-            if (Test-Path "node_modules") {
-                Write-Host "Removing existing node_modules directory..." -ForegroundColor Yellow
-                Remove-Item -Recurse -Force "node_modules"
-            }
-            
-            # Extract the compressed archive
-            Write-Host "Extracting node_modules.tar.gz..." -ForegroundColor Yellow
-            tar -xzf node_modules.tar.gz
-            
-            if (Test-Path "node_modules") {
-                Write-Host "`n✅ node_modules extracted successfully!" -ForegroundColor Green
-                Write-Host "Starting development server..." -ForegroundColor Yellow
-                npm run dev
-            } else {
-                Write-Host "`n❌ Extraction failed. Please check if tar is available on your system." -ForegroundColor Red
-            }
-        } else {
-            Write-Host "`n❌ node_modules.tar.gz not found in the current directory." -ForegroundColor Red
-            Write-Host "Please make sure you're in the project root directory." -ForegroundColor Yellow
-        }
-    }
-    
-    "4" {
         Write-Host "`n👋 Goodbye!" -ForegroundColor Cyan
         exit 0
     }
     
     default {
-        Write-Host "`n❌ Invalid choice. Please enter a number between 1 and 4." -ForegroundColor Red
+        Write-Host "`n❌ Invalid choice. Please enter a number between 1 and 3." -ForegroundColor Red
     }
 } 

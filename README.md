@@ -28,25 +28,14 @@ npm install
 npm run dev
 ```
 
-### **Option 3: Extract Compressed Dependencies (Offline)**
-
-If you prefer to extract the compressed dependencies:
-
-```bash
-# Extract dependencies
-.\extract-dependencies.ps1
-
-# Start development server
-npm run dev
-```
-
 ## 🐳 Docker Setup
 
 The project includes Docker configuration for reliable offline development:
 
 - **`Dockerfile.dev`** - Development environment with all dependencies
 - **`docker-compose.dev.yml`** - Easy development setup
-- **`setup.ps1`** - Interactive setup script
+- **`setup.ps1`** - Interactive setup script (Windows)
+- **`setup.sh`** - Interactive setup script (macOS/Linux)
 
 ### Docker Commands
 
@@ -70,8 +59,8 @@ surf-na-mao/
 ├── prisma/                 # Database schema
 ├── Dockerfile.dev          # Development Docker image
 ├── docker-compose.dev.yml  # Docker Compose for development
-├── setup.ps1              # Interactive setup script
-└── node_modules.tar.gz    # Compressed dependencies (backup)
+├── setup.ps1              # Interactive setup script (Windows)
+└── setup.sh               # Interactive setup script (macOS/Linux)
 ```
 
 ## 🔧 Development
