@@ -13,7 +13,7 @@
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^5.0.1",
-    "@prisma/client": "^5.10.2",
+    "@prisma/client": "^6.9.0",
     "@radix-ui/react-select": "^2.2.5",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-toast": "^1.2.14",
@@ -45,7 +45,7 @@
     "@types/react-dom": "^18",
     "eslint": "^9",
     "eslint-config-next": "14.1.0",
-    "prisma": "^5.10.2",
+    "prisma": "^6.9.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
