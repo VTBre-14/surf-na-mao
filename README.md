@@ -16,9 +16,27 @@ docker-compose -f docker-compose.dev.yml up --build
 
 The project will be available at [http://localhost:3000](http://localhost:3000)
 
-### **Option 2: Local Development (Requires Internet)**
+### **Option 2: Using compressed dependencies (Offline development)**
 
-If you have Node.js installed:
+This repository includes a compressed `node_modules.tar.gz` file for offline development. To use it:
+
+1. **Extract dependencies:**
+   ```bash
+   # On Windows (PowerShell)
+   .\extract-dependencies.ps1
+   
+   # On macOS/Linux
+   tar -xzf node_modules.tar.gz
+   ```
+
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+### **Option 3: Local Development (Requires Internet)**
+
+If you have Node.js installed and prefer to install dependencies normally:
 
 ```bash
 # Install dependencies
