@@ -2,16 +2,31 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+### Option 1: Using compressed dependencies (Recommended for offline use)
+
+This repository includes a compressed `node_modules.tar.gz` file for offline development. To use it:
+
+1. **Extract dependencies:**
+   ```bash
+   # On Windows (PowerShell)
+   .\extract-dependencies.ps1
+   
+   # On macOS/Linux
+   tar -xzf node_modules.tar.gz
+   ```
+
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+### Option 2: Install dependencies normally
+
+If you prefer to install dependencies normally:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
