@@ -23,9 +23,7 @@ export default async function Home() {
       reviews: true,
     },
     orderBy: {
-      reviews: {
-        _count: "desc",
-      },
+      createdAt: 'desc'
     },
   })
 
