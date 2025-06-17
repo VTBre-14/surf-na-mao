@@ -3,13 +3,10 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-interface BoardDetailsProps {
-  params: { id: string };
-}
-
-export default async function BoardDetailsPage({ params }: BoardDetailsProps) {
+export default async function BoardDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
   const board = await prisma.board.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: {
       school: true,
     },

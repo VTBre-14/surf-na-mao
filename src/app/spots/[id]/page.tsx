@@ -1,7 +1,8 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { MapPin, Wind, Waves, Clock, AlertTriangle, Coffee, Parking, Shower } from 'lucide-react';
+import { MapPin, Wind, Waves, Clock, AlertTriangle, Coffee, ParkingCircle, ShowerHead } from 'lucide-react';
+import { use } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -9,10 +10,11 @@ import { api } from '@/lib/api';
 import { SurfSpot } from '@/types/surf-spot';
 import Image from 'next/image';
 
-export default function SpotDetailPage({ params }: { params: { id: string } }) {
+export default function SpotDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const { data: spot, isLoading } = useQuery<SurfSpot>({
-    queryKey: ['spots', params.id],
-    queryFn: () => api.get(`/spots/${params.id}`).then(res => res.data),
+    queryKey: ['spots', id],
+    queryFn: () => api.get(`/spots/${id}`).then(res => res.data),
   });
 
   if (isLoading) {
@@ -101,13 +103,13 @@ export default function SpotDetailPage({ params }: { params: { id: string } }) {
                 <div className="grid grid-cols-2 gap-4">
                   {spot.amenities.includes('parking') && (
                     <div className="flex items-center text-muted-foreground">
-                      <Parking className="w-4 h-4 mr-2" />
+                      <ParkingCircle className="w-4 h-4 mr-2" />
                       <span>Parking</span>
                     </div>
                   )}
                   {spot.amenities.includes('showers') && (
                     <div className="flex items-center text-muted-foreground">
-                      <Shower className="w-4 h-4 mr-2" />
+                      <ShowerHead className="w-4 h-4 mr-2" />
                       <span>Showers</span>
                     </div>
                   )}
